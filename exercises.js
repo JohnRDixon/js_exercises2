@@ -36,12 +36,14 @@ The function should add 0.5 + 2 + 5 + 1 + 6 + 10 + 9 + 5 + 2 + 1 + 6 and should 
 
 var array_1=[ 0.5, 2, 5 ]; 
 var array_2=[ 1, 6, 10 ]; 
-var array_3=[ 9, 5, 2 ];
+var array_3=[ 9, 5, 2, 1, 6 ];
 
 var sum=function( a1, a2, a3){
   var altogether= 0;
-  for (var i=0; i<a3.length; i++){
-   altogether += a1[ i ] + a2[ i ] + a3[ i ]; 
+  var a4=a1.concat(a2);
+  a4= a4.concat(a3);
+  for (var i=0; i<a4.length; i++){
+   altogether = altogether + a4[i]; 
   }
   return altogether
 };
@@ -79,27 +81,31 @@ INCOMPLETE
 
 */
 
-var size= 19;
-var star="0"
-var dash="0"
-var board=""
+var square=function(){
 
-var square=function(s, d){
-  for (var s = 0; s < size; s--){
-   if (s<=-19){
-   board+="*";
-   } 
-  }
+  var str="";
+  var divider=1;
   
-  for (var d = 0; d < size; d++){
-   if (d>=0){
-    board+="-"; 
-   }
-  }
-  //board+="/n"
+  for( var i=0; i<10; i++){
   
+  for ( var j=0; j<19; j++){
+  
+    if( j<19-divider ){
+    str+="-";
+  
+    }
+    
+    else{
+      str+="*"
+    }
+    
+  }
+    divider+=2;
+    str+="\n";
+  
+  }
+  return str;
 };
 
-
-console.log(square(star, dash));
+console.log(square())
 
